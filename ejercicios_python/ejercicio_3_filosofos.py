@@ -72,6 +72,15 @@ def filosofo(id, rondas=3):
         # =========================================================================
         # FIN TODO
         # =========================================================================
+        if id % 2 == 0 and id != NUM_FILOSOFOS - 1:
+            primero, segundo = tenedor_izq, tenedor_der
+        else:
+            primero, segundo = tenedor_der, tenedor_izq
+        
+        # Adquirir tenedores
+        with tenedores[primero]:
+            with tenedores[segundo]:
+                comer(id)
 
 if __name__ == "__main__":
     print("=" * 60)
